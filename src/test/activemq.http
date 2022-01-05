@@ -1,0 +1,7 @@
+### Post a message to ActiveMQ
+POST http://localhost:8080/api/send
+Content-Type: application/json
+
+{}
+
+###

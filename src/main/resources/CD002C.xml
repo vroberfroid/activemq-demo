@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Information :
+1. This XML message contains some dummy data for those fields where CodeLists are not applied.
+2. Field length & Patterns used in dummy data are as per DDNTA Q2 5.14 version document.
+3. Rules and conditions are not applied in this message.
+4. This message is syntactically correct.
+-->
+<nc:CD002C PhaseID = "NCTS5.0" xmlns:nc="http://ncts.dgtaxud.ec"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://ncts.dgtaxud.ec  ../../../FodFin/Sharepoint/DDNTA/DDNTA_Appendices-5.14.0-v1.00-SfA/DDNTA_APP_X_5.14.0-v1.00-SfA/CD002C.xsd">
+    <messageSender>systema@BE0999999999</messageSender>
+    <messageRecipient>NCTS@BE</messageRecipient>
+    <preparationDateAndTime>2021-06-06T02:10:10</preparationDateAndTime>
+    <messageIdentification>123456789</messageIdentification>
+    <messageType>CD002C</messageType>
+    <correlationIdentifier>12345678910</correlationIdentifier>
+    <TransitOperation>
+        <MRN>21BE000000000952L1</MRN>
+    </TransitOperation>
+    <CustomsOfficeOfDestinationActual>
+        <referenceNumber>BE101000</referenceNumber>
+    </CustomsOfficeOfDestinationActual>
+</nc:CD002C>
