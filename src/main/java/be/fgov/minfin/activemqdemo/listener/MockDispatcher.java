@@ -24,7 +24,7 @@ import java.util.stream.Stream;
  */
 @Profile("mock")
 @Component
-public class MockReceiver {
+public class MockDispatcher {
     @Value("${ccngateway.generator.queue.fromeurope}")
     private String queue;
 
@@ -32,13 +32,13 @@ public class MockReceiver {
     JmsMessagingTemplate jmsTemplate;
     @JmsListener(destination = "${ccngateway.generator.queue.toeurope}")
     public void receiveMessage(String payload) throws URISyntaxException, IOException {
-        System.out.println("Mock Received <" + payload + ">");
+        System.out.println("** MOCK ** Message received in ActiveMQ <" + payload + ">");
         Path path = Paths.get(getClass().getClassLoader()
                 .getResource("CD002A.edifact").toURI());
         Stream<String> lines = Files.lines(path);
         String response = lines.collect(Collectors.joining("\n"));
         lines.close();
-        System.out.println("Message sent from Mock:\n" + response);
+        System.out.println("*** MOCK ** Message sent from Mock to ActiveMQ:\n" + response);
 
         Message message = MessageBuilder.withPayload(response).copyHeaders(Sender.headers()).build();
         jmsTemplate.send(queue, message);

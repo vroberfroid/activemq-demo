@@ -8,6 +8,6 @@ public class Receiver {
 
     @JmsListener(destination = "${ccngateway.generator.queue.fromeurope}")
     public void receiveMessage(String payload) {
-        System.out.println("Received <" + payload + ">");
+        System.out.println("Message received from Europe <" + payload + ">");
     }
 }

@@ -6,3 +6,10 @@ spring:
     in-memory: false
     pool:
       enabled: false
+
+ccngateway:
+  generator:
+    application: ncts
+    queue:
+      toeurope: "VirtualTopic.ccncsi.toEurope"
+      fromeurope: "ncts.ccncsi.fromEurope"
