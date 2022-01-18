@@ -28,7 +28,7 @@ class ActivemqDemoApplicationIT {
     @Test
     void testSender() throws URISyntaxException, IOException {
        sender.sendMessage();
-       verify(receiver, timeout(5000).times(1)).receiveMessage(any());
+       verify(receiver, timeout(5000).times(1)).receiveMessage(any(), any());
     }
 
 }
