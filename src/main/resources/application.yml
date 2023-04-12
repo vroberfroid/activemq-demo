@@ -1,15 +1,15 @@
 spring:
   activemq:
     broker-url: failover:(tcp://lesbamqd01.lx.finbel.intra:61616,tcp://lesbamqd02.lx.finbel.intra:61616,tcp://lesbamqd03.lx.finbel.intra:61616,tcp://lesbamqd04.lx.finbel.intra:61616)?initialReconnectDelay=100&jms.watchTopicAdvisories=false
-    user: nctsapp
-    password : (taxiapp2021)
+    user: ecsapp
+    password : (ecsapp2023)
     in-memory: false
     pool:
       enabled: false
 
 ccngateway:
   generator:
-    application: ncts
+    application: ecs-ieca
     queue:
       toeurope: "VirtualTopic.ccncsi.toEurope"
-      fromeurope: "ncts.ccncsi.fromEurope"
+      fromeurope: "ecs.ccncsi.fromEurope"

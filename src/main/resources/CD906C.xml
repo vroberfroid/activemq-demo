@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ie:CD906C xmlns:ie="http://ecs.dgtaxud.ec">
+	<messageSender>NECA.BE</messageSender>
+	<messageRecipient>NECA.DE</messageRecipient>
+	<preparationDateAndTime>2023-04-07T13:15:23</preparationDateAndTime>
+	<messageIdentification>1WC4XSCOG50DZS</messageIdentification>
+	<messageType>CD906C</messageType>
+	<correlationIdentifier>979c2642ad0a2</correlationIdentifier>
+	<Header>
+		<MRN>$MRN</MRN>
+	</Header>
+	<FunctionalError>
+		<errorPointer>/CD501C/GoodsShipment/GoodsItem[1]/TransportDocument[1]</errorPointer>
+		<errorCode>50</errorCode>
+		<errorReason>B2400</errorReason>
+	</FunctionalError>
+</ie:CD906C>

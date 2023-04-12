@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:CD501C PhaseID="AES1.0" xmlns:ns2="http://ecs.dgtaxud.ec">
+  <messageSender>NECA.BE</messageSender>
+  <messageRecipient>NECA.PL</messageRecipient>
+  <preparationDateAndTime>2023-03-08T15:59:18</preparationDateAndTime>
+  <messageIdentification>979c2642ad0a-4</messageIdentification>
+  <messageType>CD501C</messageType>
+  <ExportOperation>
+    <MRN>$MRN</MRN>
+    <declarationType>EX</declarationType>
+    <additionalDeclarationType>A</additionalDeclarationType>
+    <declarationSubmissionDateAndTime>2023-03-08T15:59:18</declarationSubmissionDateAndTime>
+    <declarationAcceptanceDate>2023-03-08</declarationAcceptanceDate>
+    <releaseDate>2023-03-08</releaseDate>
+    <security>2</security>
+  </ExportOperation>
+  <CustomsOfficeOfExport>
+    <referenceNumber>BE212000</referenceNumber>
+  </CustomsOfficeOfExport>
+  <CustomsOfficeOfExitDeclared>
+    <referenceNumber>PL445010</referenceNumber>
+  </CustomsOfficeOfExitDeclared>
+  <Exporter>
+    <identificationNumber>BE0405007662</identificationNumber>
+    <name>Robert</name>
+    <Address>
+      <streetAndNumber>high street 15</streetAndNumber>
+      <postcode>1000</postcode>
+      <city>London</city>
+      <country>GB</country>
+    </Address>
+  </Exporter>
+  <ControlResult>
+    <code>A2</code>
+    <date>2023-03-08</date>
+    <text>Result created by the fallback procedure for risk analysis</text>
+  </ControlResult>
+  <RiskAnalysisIdentification>
+    <code>Z</code>
+  </RiskAnalysisIdentification>
+  <GoodsShipment>
+    <countryOfExport>BE</countryOfExport>
+    <countryOfDestination>CA</countryOfDestination>
+    <Consignment>
+      <containerIndicator>0</containerIndicator>
+      <inlandModeOfTransport>4</inlandModeOfTransport>
+      <modeOfTransportAtTheBorder>4</modeOfTransportAtTheBorder>
+      <grossMass>17.00</grossMass>
+      <DepartureTransportMeans>
+        <sequenceNumber>1</sequenceNumber>
+        <typeOfIdentification>40</typeOfIdentification>
+        <identificationNumber>CA 028</identificationNumber>
+        <nationality>BE</nationality>
+      </DepartureTransportMeans>
+      <ActiveBorderTransportMeans>
+        <typeOfIdentification>40</typeOfIdentification>
+        <identificationNumber>CA 028</identificationNumber>
+        <nationality>BE</nationality>
+      </ActiveBorderTransportMeans>
+    </Consignment>
+    <GoodsItem>
+      <declarationGoodsItemNumber>1</declarationGoodsItemNumber>
+      <statisticalValue>1234.25</statisticalValue>
+      <Procedure>
+        <requestedProcedure>10</requestedProcedure>
+        <previousProcedure>00</previousProcedure>
+      </Procedure>
+      <Commodity>
+        <descriptionOfGoods>non vulcanic foils and bands</descriptionOfGoods>
+        <CommodityCode>
+          <harmonizedSystemSubHeadingCode>919108</harmonizedSystemSubHeadingCode>
+          <combinedNomenclatureCode>00</combinedNomenclatureCode>
+        </CommodityCode>
+        <GoodsMeasure>
+          <grossMass>15.15</grossMass>
+          <netMass>30.00</netMass>
+        </GoodsMeasure>
+      </Commodity>
+      <Packaging>
+        <sequenceNumber>1</sequenceNumber>
+        <typeOfPackages>CT</typeOfPackages>
+        <numberOfPackages>2</numberOfPackages>
+        <shippingMarks>No markings</shippingMarks>
+      </Packaging>
+    </GoodsItem>
+  </GoodsShipment>
+</ns2:CD501C>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ie:CD502C xmlns:ie="http://ecs.dgtaxud.ec">
+  <messageSender>NECA.BE</messageSender>
+  <messageRecipient>NECA.DE</messageRecipient>
+  <preparationDateAndTime>2023-03-31T12:30:09</preparationDateAndTime>
+  <messageIdentification>JL86LMNE52YHVC0HIKF7AN2TIRJUJJM6817</messageIdentification>
+  <messageType>CD502C</messageType>
+  <ExportOperation>
+    <MRN>$MRN</MRN>
+  </ExportOperation>
+  <CustomsOfficeOfExitActual>
+    <referenceNumber>BE101000</referenceNumber>
+  </CustomsOfficeOfExitActual>
+</ie:CD502C>

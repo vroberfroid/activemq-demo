@@ -1,7 +1,11 @@
-### Post a message to ActiveMQ
-POST http://localhost:8080/api/send
+### Scenario EBS-DIV-002_4
+POST http://localhost:8080/api/send?messageType=CD502C&mrn=23BECC0000010003A9&applicationName=ECS&context=CTA&country=DE
 Content-Type: application/xml
 
-{}
+### Scenario TC_ieCA.1
+POST http://localhost:8080/api/send?messageType=CD501C&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=IE
+Content-Type: application/xml
 
-###
+### Scenario TC_ieCA.2
+POST http://localhost:8080/api/send?messageType=CD906C&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=IE
+Content-Type: application/xml
