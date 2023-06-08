@@ -1,11 +1,20 @@
 ### Scenario EBS-DIV-002_4
-POST http://localhost:8080/api/send?messageType=CD502C&mrn=23BECC0000010003A9&applicationName=ECS&context=CTA&country=DE
+POST http://localhost:8080/api/send?messageType=CD502C.xml&mrn=23BECC0000010003A9&applicationName=ECS&context=CTA&country=DE
+Content-Type: application/xml
+
+### Scenario EFE-B2400_1
+POST http://localhost:8080/api/send?messageType=CD906C.xml&mrn=23DE6D16E9D9644EB1&applicationName=ECS&context=CTA&country=DE
 Content-Type: application/xml
 
 ### Scenario TC_ieCA.1
-POST http://localhost:8080/api/send?messageType=CD501C&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=IE
+POST http://localhost:8080/api/send?messageType=CD501C.xml&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=XX
 Content-Type: application/xml
 
+### Scenario zip
+POST http://localhost:8080/api/send?messageType=CD518C-MSG.ECS_123.zip&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=XX
+Content-Type: application/octet-stream
+
 ### Scenario TC_ieCA.2
-POST http://localhost:8080/api/send?messageType=CD906C&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=IE
+POST http://localhost:8080/api/send?messageType=CD906C.xml&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=XX
 Content-Type: application/xml
+

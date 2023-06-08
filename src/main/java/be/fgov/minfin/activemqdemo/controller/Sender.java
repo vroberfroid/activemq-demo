@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -52,25 +53,43 @@ public class Sender {
     }
 
     @PostMapping(path = "send")
-    public void send(@RequestParam String messageType, @RequestParam String mrn,
-                                  @RequestParam String applicationName, @RequestParam String context, @RequestParam String country) throws URISyntaxException, IOException {
-        Path path = Paths.get(getClass().getClassLoader()
-                .getResource(messageType + ".xml").toURI());
-        Stream<String> lines = Files.lines(path);
-        String payload = lines.collect(Collectors.joining("\n"));
-        lines.close();
-        if (StringUtils.isNotEmpty(mrn)) {
-            payload = payload.replace("$MRN", mrn);
-        }
+    public void send(@RequestParam String messageType,
+                     @RequestParam String mrn,
+                     @RequestParam String applicationName,
+                     @RequestParam String context,
+                     @RequestParam String country,
+                     @RequestParam(required = false) String correlationId) throws URISyntaxException, IOException {
 
-        Map<String, Object> headers = headers(messageType, mrn,applicationName,country, context);
-        printMessage(headers, payload);
-        Message message = MessageBuilder.withPayload(payload).copyHeaders(headers).build();
+        Path path = Paths.get(getClass().getClassLoader()
+                .getResource(messageType).toURI());
+        Message message;
+        if(messageType.contains(".zip")) {
+            byte[] payload = Files.readAllBytes(path);
+            messageType = messageType.substring(0, messageType.indexOf("-"));
+            Map<String, Object> headers = headers(messageType, mrn, applicationName, country, context, "zip");
+            printMessage(headers, payload.toString());
+            message = MessageBuilder.withPayload(payload).copyHeaders(headers).build();
+        } else {
+            Stream<String> lines = Files.lines(path);
+            String payload = lines.collect(Collectors.joining("\n"));
+            lines.close();
+            if (StringUtils.isNotEmpty(mrn)) {
+                payload = payload.replace("$MRN", mrn);
+            }
+            if (StringUtils.isNotEmpty(correlationId)) {
+                payload = payload.replace("$CORRELATION_ID", correlationId);
+            }
+
+            messageType = messageType.substring(0, messageType.indexOf("."));
+            Map<String, Object> headers = headers(messageType, mrn, applicationName, country, context, "xml");
+            printMessage(headers, payload);
+            message = MessageBuilder.withPayload(payload).copyHeaders(headers).build();
+        }
         jmsTemplate.send(queue, message);
     }
 
 
-    public static Map<String, Object> headers(String messageType, String correlationId, String applicationName, String country, String context) {
+    public static Map<String, Object> headers(String messageType, String correlationId, String applicationName, String country, String context, String contentType) {
         Map<String, Object> map = new HashMap<>();
         String messageId = String.format("%s%06d%02d", LocalDateTime.now().format(DATE_FORMATTER), (new Random()).nextInt(999999), 1);
         if(StringUtils.isEmpty(correlationId)) {
@@ -80,27 +99,17 @@ public class Sender {
         map.put(Headers.APPLICATION_SENDER, applicationName);
         map.put(Headers.CORRELATION_ID, correlationId);
         map.put(Headers.MESSAGE_ID, messageId);
-        map.put(Headers.CONTENT_TYPE, "application/xml");
-        map.put(Headers.COUNTRY_CODE, country);
-        map.put(Headers.MESSAGE_TYPE, messageType + "-MSG." + applicationName);
-        map.put(Headers.QUEUE_BASE_NAME, getQueueBaseName(messageType, applicationName, context));
-        map.put(Headers.QUEUE_MESSAGE_TYPE, "REQUEST");
-        return map;
-    }
+        if(contentType.equals("zip")) {
+            map.put(Headers.CONTENT_TYPE, "application/octet-stream");
+            map.put(Headers.QUEUE_MESSAGE_TYPE, "DATAGRAM");
+        } else {
+            map.put(Headers.CONTENT_TYPE, "application/xml");
+            map.put(Headers.QUEUE_MESSAGE_TYPE, "REQUEST");
+        }
+            map.put(Headers.COUNTRY_CODE, country);
+            map.put(Headers.MESSAGE_TYPE, messageType + "-MSG." + applicationName);
+            map.put(Headers.QUEUE_BASE_NAME, getQueueBaseName(messageType, applicationName, context));
 
-    public static Map<String, Object> headersAesCta906() {
-        Map<String, Object> map = new HashMap<>();
-        String messageId = String.format("%s%06d%02d", LocalDateTime.now().format(DATE_FORMATTER), (new Random()).nextInt(999999), 1);
-        String correlationId = "23DE37D25B5E6FC0B9";
-        map.put(Headers.APPLICATION, "ECS");
-        map.put(Headers.APPLICATION_SENDER, "ECS");
-        map.put(Headers.CORRELATION_ID, correlationId);
-        map.put(Headers.MESSAGE_ID, messageId);
-        map.put(Headers.CONTENT_TYPE, "application/xml");
-        map.put(Headers.COUNTRY_CODE, "DE");
-        map.put(Headers.MESSAGE_TYPE, "CD906C-MSG.ECS");
-        map.put(Headers.QUEUE_BASE_NAME, "ADM1-03");
-        map.put(Headers.QUEUE_MESSAGE_TYPE, "REQUEST");
         return map;
     }
 

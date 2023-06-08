@@ -40,7 +40,8 @@ public class MockDispatcher {
         lines.close();
         System.out.println("*** MOCK ** Message sent from Mock to ActiveMQ:\n" + response);
 
-        Message message = MessageBuilder.withPayload(response).copyHeaders(Sender.headers("CD002A", "1234", "NCTS", "IE", "IECA")).build();
+        Message message = MessageBuilder.withPayload(response)
+                .copyHeaders(Sender.headers("CD002A", "1234", "NCTS", "IE", "IECA", "xml")).build();
         jmsTemplate.send(queue, message);
     }
 }

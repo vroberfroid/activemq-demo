@@ -1,8 +1,8 @@
 spring:
   activemq:
-    broker-url: failover:(tcp://lesbamqd01.lx.finbel.intra:61616,tcp://lesbamqd02.lx.finbel.intra:61616,tcp://lesbamqd03.lx.finbel.intra:61616,tcp://lesbamqd04.lx.finbel.intra:61616)?initialReconnectDelay=100&jms.watchTopicAdvisories=false
-    user: ecsapp
-    password : (ecsapp2023)
+    broker-url: failover:(tcp://lesbamqd01.lx.finbel.intra:61616,tcp://lesbamqd02.lx.finbel.intra:61616,tcp://lesbamqd03.lx.finbel.intra:61616,tcp://lesbamqd04.lx.finbel.intra:61616,tcp://lesbamqd05.lx.finbel.intra:61616,tcp://lesbamqd06.lx.finbel.intra:61616)
+    user: cdmrapp
+    password : (cdmrapp2023)
     in-memory: false
     pool:
       enabled: false
@@ -13,3 +13,4 @@ ccngateway:
     queue:
       toeurope: "VirtualTopic.ccncsi.toEurope"
       fromeurope: "ecs.ccncsi.fromEurope"
+      fromieca: "ecs.ieca.ccncsi.fromEurope"
