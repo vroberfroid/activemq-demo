@@ -11,7 +11,7 @@ POST http://localhost:8080/api/send?messageType=CD501C.xml&mrn=23BECC0000010003A
 Content-Type: application/xml
 
 ### Scenario zip
-POST http://localhost:8080/api/send?messageType=CD518C-MSG.ECS_123.zip&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=XX
+POST http://localhost:8080/api/send?messageType=CD518C-MSG.ECS_23BECC0000010003A9.zip&mrn=23BECC0000010003A9&applicationName=ECS&context=IECA&country=XX
 Content-Type: application/octet-stream
 
 ### Scenario TC_ieCA.2
